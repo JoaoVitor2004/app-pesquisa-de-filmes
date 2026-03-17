@@ -1,4 +1,4 @@
-import { Box, Flex, Heading, Text, TextField } from "@radix-ui/themes"
+import { Box, Flex, Heading, Text } from "@radix-ui/themes"
 import { MagnifyingGlassIcon } from "@radix-ui/react-icons"
 import styles from "./styles/App.module.css"
 import CardMovie from "./components/CardMovie"

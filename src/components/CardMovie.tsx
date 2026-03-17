@@ -16,6 +16,8 @@ const CardMovie: React.FC = () => {
         GetMovie().then(data => setMovie(data))
     }, [])
 
+    console.log(movie)
+
     return (
         <Box width={"100%"} p={"8"}>
             <Flex gap={"7"}>
