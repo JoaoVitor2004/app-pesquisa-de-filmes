@@ -1,36 +1,39 @@
 import { Box, Heading, Text, Flex } from "@radix-ui/themes"
-import { useEffect, useState } from "react"
-
-const GetMovie = async () => {
-    const response = await fetch("https://api.themoviedb.org/3/movie/11")
-    const data = await response.json()
-    console.log(data)
-    return data
-}
+import { useMovie } from "../hooks/useMovie"
+import styles from "../styles/App.module.css"
 
 const CardMovie: React.FC = () => {
 
-    const [movie, setMovie] = useState([])
+    const { input, movie } = useMovie()
 
-    useEffect(() => {
-        GetMovie().then(data => setMovie(data))
-    }, [])
-
-    console.log(movie)
+    const movieSelected = movie.filter(item => item.title === input)
 
     return (
         <Box width={"100%"} p={"8"}>
-            <Flex gap={"7"}>
-                <Box>
-                    <Heading as="h2" mb={"4"}>Título do filme</Heading>
-                    <Text as="p" mb={"6"}>Descrição do filme</Text>
-                    <Flex direction={"column"} gap={"3"}>
-                        <Text as="p">Diretor: </Text>
-                        <Text as="p">Atores: </Text>
-                        <Text as="p">Nota IMDb: </Text>
-                    </Flex>
-                </Box>
-            </Flex>
+            <Box>
+                {
+                    input !== "" && (
+                        movieSelected.map(item => (
+                            <Flex justify={"center"} gap={"7"} mb={"9"} key={item.title}>
+                                <img className={styles.poster} src={`https://image.tmdb.org/t/p/w500/${item.poster_path}`} alt="Poster do filme" />
+                                
+                                <Box>
+                                    <Heading as="h2" mb={"4"}>Título: {item.title}</Heading>
+                                    <Text as="p" mb={"6"}>{item.overview}</Text>
+                                    {/* <Flex direction={"column"} gap={"3"}>
+                                        <Text as="p">Diretor: </Text>
+                                        <Text as="p">Atores: </Text>
+                                        <Text as="p">Nota IMDb: </Text>
+                                    </Flex> */}
+                                </Box>
+                            </Flex>
+                        ))
+                    ) || (
+                        <Heading align={"center"} as="h3">Nenhum filme selecionado</Heading>
+                    )
+                }
+                
+            </Box>
         </Box>
     )
 }
