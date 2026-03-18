@@ -7,11 +7,11 @@ import { useMovie } from "./hooks/useMovie"
 const App: React.FC = () => {
 
   let { input, getValue } = useMovie()
-  
+
   return (
     <Box m={"auto"} mt={"8"} maxWidth={"800px"}>
       <Heading align={"center"} as="h1" size={"9"} weight={"bold"} mb={"7"}>TMDb</Heading>
-      <Flex className={styles.search} m={"auto"} width={"50%"} maxWidth={"100%"} align={"center"} gap={"3"} p={"4"} px={"5"} mb={"6"}>
+      <Flex className={styles.search} m={"auto"} width={"500px"} maxWidth={"90%"} align={"center"} gap={"3"} p={"4"} px={"5"} mb={"6"}>
         <Text as="label" htmlFor="movie">
           <Flex align={"center"}>
             <MagnifyingGlassIcon />

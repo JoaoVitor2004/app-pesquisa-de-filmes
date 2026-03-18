@@ -14,7 +14,7 @@ const CardMovie: React.FC = () => {
                 {
                     input !== "" && (
                         movieSelected.map(item => (
-                            <Flex justify={"center"} gap={"7"} mb={"9"} key={item.title}>
+                            <Flex className={styles.card} justify={"center"} gap={"7"} mb={"9"} key={item.title}>
                                 <img className={styles.poster} src={`https://image.tmdb.org/t/p/w500/${item.poster_path}`} alt="Poster do filme" />
                                 
                                 <Box>
