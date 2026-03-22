@@ -26,8 +26,12 @@
     grid-template-columns: repeat(auto-fit, minmax(100px, 250px));
 }
 
-@media (width < 570px) {
-    .card {
-        flex-direction: column;
+.text {
+    font-size: 2vw;
+}
+
+@media (width < 768px) {
+    .text {
+        font-size: 6vw;
     }
 }

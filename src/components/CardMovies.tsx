@@ -12,7 +12,7 @@ const CardMovies: React.FC = () => {
             <Box>
                 <Flex justify={"center"}>
                     <Badge color="grass" mb={"8"}>
-                        { input === "" ? <Heading size={"8"} as="h2">Os melhores filmes</Heading> : <Heading size={"8"} as="h2">Pesquisando por: {input}</Heading> }
+                        { input === "" ? <Heading as="h2" className={styles.text}>Os melhores filmes</Heading> : <Heading as="h2" className={styles.text}>Pesquisando por: {input}</Heading> }
                     </Badge>
                 </Flex>
                 <ScrollArea scrollbars="horizontal">
