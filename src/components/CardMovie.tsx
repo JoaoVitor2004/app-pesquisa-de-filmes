@@ -1,38 +1,18 @@
-import { Box, Heading, Text, Flex } from "@radix-ui/themes"
-import { useMovie } from "../hooks/useMovie"
+import { Box, Heading, Text } from "@radix-ui/themes"
 import styles from "../styles/App.module.css"
+import { type Movie } from "../contexts/MoviesContexts"
 
-const CardMovie: React.FC = () => {
+interface propsMovie {
+    movie: Movie
+}
 
-    const { input, movie } = useMovie()
-
-    const movieSelected = movie.filter(item => item.title === input)
-
+const CardMovie: React.FC<propsMovie> = ({ movie }) => {
     return (
-        <Box width={"100%"} p={"8"}>
+        <Box style={{ position: "relative" }} width={"100%"} height={"400px"} p={"2"} className={styles.card}>
+            <img className={styles.poster} src={`https://image.tmdb.org/t/p/w500/${movie?.poster_path}`} alt="Poster do filme" />
             <Box>
-                {
-                    input !== "" && (
-                        movieSelected.map(item => (
-                            <Flex className={styles.card} justify={"center"} gap={"7"} mb={"9"} key={item.title}>
-                                <img className={styles.poster} src={`https://image.tmdb.org/t/p/w500/${item.poster_path}`} alt="Poster do filme" />
-                                
-                                <Box>
-                                    <Heading as="h2" mb={"4"}>Título: {item.title}</Heading>
-                                    <Text as="p" mb={"6"}>{item.overview}</Text>
-                                    {/* <Flex direction={"column"} gap={"3"}>
-                                        <Text as="p">Diretor: </Text>
-                                        <Text as="p">Atores: </Text>
-                                        <Text as="p">Nota IMDb: </Text>
-                                    </Flex> */}
-                                </Box>
-                            </Flex>
-                        ))
-                    ) || (
-                        <Heading align={"center"} as="h3">Nenhum filme selecionado</Heading>
-                    )
-                }
-                
+                <Heading as="h2" mb={"4"}>Título: {movie?.title}</Heading>
+                <Text as="p" size={"3"}>{movie?.overview}</Text>
             </Box>
         </Box>
     )

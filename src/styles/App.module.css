@@ -1,3 +1,7 @@
+.card {
+    overflow-y: auto;
+}
+
 .input {
     width: 100%;
     background: none;
@@ -13,9 +17,13 @@
 
 .poster {
     object-fit: contain;
-    max-width: 400px;
-    height: 300px;
+    width: 100%;
+    margin-bottom: 30px;
     border-radius: 15px;
+}
+
+.movies {
+    grid-template-columns: repeat(auto-fit, minmax(100px, 250px));
 }
 
 @media (width < 570px) {
