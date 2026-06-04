@@ -6,7 +6,7 @@ Projeto utilizando a api do TMDb para exibir os melhores filmes e buscar por um 
 
 ### ⚙️ Acesar o projeto
 
-[Endereço](app-pesquisa-de-filmes.vercel.app)
+<a href="https://app-pesquisa-de-filmes.vercel.app">Endereço</a>
 
 ### 🛠️ Tecnologias utilizadas
 
