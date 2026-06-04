@@ -8,25 +8,23 @@ const CardMovies: React.FC = () => {
     const { input, movie, selectedMovie } = useMovie()
 
     return (
-        <Box width={"100%"} p={"8"}>
-            <Box>
-                <Flex justify={"center"}>
-                    <Badge color="grass" mb={"8"}>
-                        { input === "" ? <Heading as="h2" className={styles.text}>Os melhores filmes</Heading> : <Heading as="h2" className={styles.text}>Pesquisando por: {input}</Heading> }
-                    </Badge>
-                </Flex>
-                <ScrollArea scrollbars="horizontal">
-                    <Grid className={styles.movies} gap={"9"}>
-                        {
-                            input === "" && (
-                                movie.map(movie => <CardMovie key={movie.id} movie={movie} />)
-                            ) || (
-                                selectedMovie.map(movie => <CardMovie key={movie.id} movie={movie} />)
-                            )
-                        }
-                    </Grid>
-                </ScrollArea>
-            </Box>
+        <Box width={"100%"}>
+            <Flex justify={"center"}>
+                <Badge color="grass" mb={"8"}>
+                    {input === "" ? <Heading as="h2" className={styles.text}>Os melhores filmes</Heading> : <Heading as="h2" className={styles.text}>Pesquisando por: {input}</Heading>}
+                </Badge>
+            </Flex>
+            <ScrollArea scrollbars="horizontal">
+                <Grid className={styles.movies} gap={"9"}>
+                    {
+                        input === "" && (
+                            movie.map(movie => <CardMovie key={movie.id} movie={movie} />)
+                        ) || (
+                            selectedMovie.map(movie => <CardMovie key={movie.id} movie={movie} />)
+                        )
+                    }
+                </Grid>
+            </ScrollArea>
         </Box>
     )
 }
