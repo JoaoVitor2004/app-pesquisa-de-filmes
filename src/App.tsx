@@ -4,6 +4,16 @@ import styles from "./styles/App.module.css"
 import CardMovie from "./components/CardMovies"
 import { useMovie } from "./hooks/useMovie"
 
+import gsap from "gsap"
+import { ScrollSmoother } from "gsap/ScrollSmoother"
+
+gsap.registerPlugin(ScrollSmoother);
+
+ScrollSmoother.create({
+  smooth: 2,
+  effects: true
+})
+
 const App: React.FC = () => {
 
   let { input, getValue } = useMovie()
