@@ -34,7 +34,7 @@ const CardMovies: React.FC = () => {
                 </Badge>
             </Flex>
             <ScrollArea scrollbars="horizontal">
-                <Grid className={`${styles.movies} ${"movies"}`} columns={"4"} gap={"9"}>
+                <Grid className={`${styles.movies} ${"movies"}`} columns={"3"} gap={"9"}>
                     {
                         input === "" && (
                             movie.map(movie => <CardMovie key={movie.id} movie={movie} />)

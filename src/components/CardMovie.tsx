@@ -1,4 +1,4 @@
-import { Box, Flex, Heading, Text } from "@radix-ui/themes"
+import { Box, Card, Flex, Heading, Text } from "@radix-ui/themes"
 import styles from "../styles/App.module.css"
 import { type Movie } from "../contexts/MoviesContexts"
 import { useRef } from "react"
@@ -46,14 +46,22 @@ const CardMovie: React.FC<propsMovie> = ({ movie }) => {
 
     }, { scope: container })
 
+
+    const date = new Date(movie.release_date).toLocaleString("pt-BR").split("").splice(0, 10, "")
+
+    console.log(date)
+
     return (
-        <Flex ref={container} direction={"column"} gap={"6"} p={"2"} className={styles.card}>
-            <img className={`${styles.poster} ${"poster"}`} src={`https://image.tmdb.org/t/p/w500/${movie?.poster_path}`} alt="Poster do filme" />
-            <Box>
-                <Heading className={`${styles.title} ${"title"}`} as="h2" mb={"6"}>Título: {movie?.title}</Heading>
-                <Text className={styles.description} as="p" size={"3"}>{movie?.overview}</Text>
-            </Box>
-        </Flex>
+        <Card className={styles.movie}>
+            <Flex ref={container} direction={"column"} gap={"6"} p={"2"} className={styles.card}>
+                <img className={`${styles.poster} ${"poster"}`} src={`https://image.tmdb.org/t/p/w500/${movie?.poster_path}`} alt="Poster do filme" />
+                <Box>
+                    <Heading className={`${styles.title} ${"title"}`} as="h2" size={"7"} mb={"4"}>Título: {movie?.title}</Heading>
+                    <Heading as="h4" size={"4"} mb={"7"}>Data de lançamento: {date}</Heading>
+                    <Text className={styles.description} as="p" size={"3"}>{movie?.overview}</Text>
+                </Box>
+            </Flex>
+        </Card>
     )
 }
 
